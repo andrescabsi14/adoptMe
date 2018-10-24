@@ -1,5 +1,5 @@
 {
-  "name": "adoptMe",
+  "name": "adoptme",
   "version": "1.0.0",
   "description": "Application for pet adoption",
   "main": "index.js",
@@ -9,5 +9,8 @@
   "private": true,
   "scripts": {
     "install": "yarn install"
+  },
+  "devDependencies": {
+    "prettier": "^1.14.3"
   }
 }
