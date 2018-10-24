@@ -1,0 +1,13 @@
+{
+  "name": "adoptMe",
+  "version": "1.0.0",
+  "description": "Application for pet adoption",
+  "main": "index.js",
+  "repository": "https://github.com/andrescabsi14/adoptMe",
+  "author": "AndresCabrera",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "install": "yarn install"
+  }
+}
