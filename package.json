@@ -1,15 +1,24 @@
 {
   "name": "adoptme",
   "version": "1.0.0",
-  "description": "Application for pet adoption",
+  "description": "Pet adoption application",
   "main": "index.js",
-  "repository": "https://github.com/andrescabsi14/adoptMe",
-  "author": "AndresCabrera",
+  "scripts": {
+    "format": "prettier --write \"src/**/*.{js,jsx,css,json}\"",
+    "format:check": "prettier --list-different \"src/**/*.{js,jsx,css,json}\"",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andrescabsi14/adoptMe.git"
+  },
+  "author": "Andres Cabrera",
   "license": "MIT",
   "private": true,
-  "scripts": {
-    "install": "yarn install"
+  "bugs": {
+    "url": "https://github.com/andrescabsi14/adoptMe/issues"
   },
+  "homepage": "https://github.com/andrescabsi14/adoptMe#readme",
   "devDependencies": {
     "prettier": "^1.14.3"
   }
