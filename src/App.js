@@ -58,10 +58,11 @@ class App extends React.Component {
               name={pet.name}
               animal={pet.animal}
               breed={breed}
+              media={pet.media}
+              location={`${pet.contact.city}, ${pet.contact.state}.`}
             />
           );
         })}
-        <Pet name="Nicky" animal="Dog" breed="Mixed" />
       </React.Fragment>
     );
   }
