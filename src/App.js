@@ -44,10 +44,24 @@ class App extends React.Component {
     return (
       <React.Fragment>
         <h1>Adopt Me!</h1>
-        <pre>
-          <code>{JSON.stringify(this.state, null, 4)}</code>
-        </pre>
-        {/* <Pet name="Nicky" animal="Dog" breed="Mixed" /> */}
+        {this.state.pets.map(pet => {
+          let breed;
+
+          if (Array.isArray(pet.breeds.breed)) {
+            breed = pet.breeds.breed.join(", ");
+          } else {
+            breed = pet.breeds.breed;
+          }
+          return (
+            <Pet
+              key={pet.id}
+              name={pet.name}
+              animal={pet.animal}
+              breed={breed}
+            />
+          );
+        })}
+        <Pet name="Nicky" animal="Dog" breed="Mixed" />
       </React.Fragment>
     );
   }
