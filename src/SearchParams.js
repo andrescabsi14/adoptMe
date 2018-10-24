@@ -1,6 +1,5 @@
 import React from "react";
-import { ANIMALS } from "petfinder-client";
-import pf from "petfinder-client";
+import pf, { ANIMALS } from "petfinder-client";
 
 const petfinder = pf({
   key: process.env.API_KEY,
