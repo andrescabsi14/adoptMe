@@ -47,7 +47,7 @@ class Details extends React.Component {
   }
   render() {
     if (this.state.loading) {
-      return <h1>Loading</h1>;
+      return <h1>Loading ...</h1>;
     }
 
     const { media, animal, breed, location, description, modal } = this.state;
