@@ -1,6 +1,8 @@
 import React from "react";
 import pf from "petfinder-client";
+import { Consumer } from "./searchContext";
 import Pet from "./Pet";
+import SearchBox from "./SearchBox";
 
 // Remove key access
 const petfinder = pf({
@@ -14,10 +16,16 @@ class Results extends React.Component {
   };
 
   componentDidMount() {
+    this.search();
+  }
+
+  search = () => {
     petfinder.pet
       .find({
         output: "full",
-        location: "Ann Arbor, MI"
+        location: this.props.searchParams.location,
+        animal: this.props.searchParams.animal,
+        breed: this.props.searchParams.breed
       })
       .then(data => {
         let pets;
@@ -32,14 +40,13 @@ class Results extends React.Component {
           pets = [];
         }
 
-        this.setState({
-          pets
-        });
+        this.setState({ pets });
       });
-  }
+  };
   render() {
     return (
       <div className="search">
+        <SearchBox search={this.search} />
         <h1>Search</h1>
         {this.state.pets.map(pet => {
           let breed;
@@ -66,4 +73,10 @@ class Results extends React.Component {
   }
 }
 
-export default Results;
+export default function ResultsWithContext(props) {
+  return (
+    <Consumer>
+      {context => <Results {...props} searchParams={context} />}
+    </Consumer>
+  );
+}
