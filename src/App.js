@@ -4,11 +4,13 @@ import { Router, Link } from "@reach/router";
 import Results from "./Results";
 import Details from "./Details";
 import SearchParams from "./SearchParams";
+import GAN from "./GAN/GAN";
 
 class App extends React.Component {
   render() {
     return (
       <div>
+        <GAN />
         <header>
           <Link to="/">Adopt Me!</Link>
         </header>
