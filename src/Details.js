@@ -3,6 +3,8 @@ import pf from "petfinder-client";
 import { navigate } from "@reach/router";
 import Carousel from "./Carousel";
 
+import Modal from "./Modal";
+
 // Remove key access
 const petfinder = pf({
   key: process.env.API_KEY,
@@ -10,8 +12,11 @@ const petfinder = pf({
 });
 class Details extends React.Component {
   state = {
-    loading: true
+    loading: true,
+    modal: false
   };
+
+  toggleModal = () => this.setState({ modal: !this.state.modal });
 
   componentDidMount() {
     petfinder.pet
@@ -45,17 +50,27 @@ class Details extends React.Component {
       return <h1>Loading</h1>;
     }
 
-    const { media, animal, breed, location, description } = this.state;
+    const { media, animal, breed, location, description, modal } = this.state;
 
     return (
       <div className="details">
         <Carousel media={media} />
         <div>
-          <h1>{name}</h1>
+          <h1 ref={el => (this.myEl = el)}>{name}</h1>
           <h2>
             {animal} - {breed} - {location}
           </h2>
+          <button onClick={this.toggleModal}>Adopt {name} </button>
           <p>{description}</p>
+          {modal ? (
+            <Modal>
+              <h1>Would you like to adopt {name} ? </h1>
+              <div className="buttons">
+                <button onClick={this.toggleModal}>Yes</button>
+                <button onClick={this.toggleModal}>No</button>
+              </div>
+            </Modal>
+          ) : null}
         </div>
       </div>
     );
